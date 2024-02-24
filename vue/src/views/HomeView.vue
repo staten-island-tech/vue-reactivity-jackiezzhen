@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <DestCard
-      v-for="destination in character"
-      :key="destination.name"
-      :Destination="destination"
-    />
-  </div>
+   <video autoplay muted loop>
+      <source src="@/assets/train.mp4" type="video/mp4">
+    </video>
 </template>
 
 <script setup>
-import DestCard from "@/components/icons/card.vue";
+
 </script>
 
-<style scoped></style>
+<style scoped>
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+</style>

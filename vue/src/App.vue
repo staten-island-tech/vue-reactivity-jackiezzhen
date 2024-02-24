@@ -4,30 +4,33 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/wish">Wish</RouterLink>
-        <RouterLink to="/characters">Inventory</RouterLink>
-        <RouterLink to="/info">Info</RouterLink>
+        <RouterLink to="/" class="home"><img id="home" width="200rem" src="@/assets/home.png" alt="Home"></RouterLink>
+        <div class="icons" id="icons">
+          <RouterLink to="/wish" class="wish"><img class="id" src="@/assets/Icon_Warp.webp" alt="Wish"></RouterLink>
+          <RouterLink to="/characters" class="characters"><img id="characters" src="@/assets/Icon_Characters.webp" alt="Characters"></RouterLink>
+        </div>
       </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 
 <style scoped>
+body, html{
+  box-sizing: border-box;
+}
+.home {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  z-index: 100;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
 }
 
 nav {
@@ -38,17 +41,33 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  opacity: 20%;
+
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+nav a.home.router-link-exact-active {
+  opacity: 0%;
+}
+
+nav a.wish img,
+nav a.characters img {
+  width: 10rem;
+}
+
+.icons {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav a:hover {
+  opacity: 50%;
 }
 
 nav a {
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
