@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <img class=Wish_bg src="../assets/Wish_bg.avif">
-    <button class="Clear" :class="{'display': on}" v-on:click="clear()"><img class=Wish_close :class="{'display':on}" src="../assets/Icon_close.png"></button>
+    <button :class="{'clear': on}" v-on:click="clear()"><img :class="{'Wish_close':on}" src="../assets/Icon_close.png"></button>
     <div class="WarpBtn">
       <button class="Warp1x" v-on:click="iteration(1)">Warp 1×</button>
       <button class="Warp10x" v-on:click="iteration(10)">Warp 10×</button>
       
     </div>
-    <div class=banner>
-      <!-- <img class="banner" src="../assests/banner"> -->
+    <div class=banner_container>
+      <img class="banner" src="../assets/Wallpaper_Banner.jpg">
     </div>
-    <div class="wished" :class="{'display': on}">
+    <div :class="{'wished': on}">
       <wishCard v-for="(wish) in wish_Char" 
       :key="wish[i]" 
       :wish="wish" />
@@ -96,27 +96,30 @@ body {
 .wished{
   z-index: 1;
   display: flex;
-  flex: wrap;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   place-items: center;
+  position: absolute;
   gap:1rem;
   width: 100%;
   height: 100%;
-}
-.wished.display{
   background-color: rgb(0,0,0,0.8);
 }
-.banner {
+.banner_container {
   position: absolute;
-  top:2rem;
+  top:1rem;
   transform: translateX(-150rem);
-  width: 70%;
-  height: 80%;
+  width: 80%;
+  height: auto;
   display: flex;
-  background-color: aliceblue;
-  border-radius: 2rem;
+  justify-content: center;
   animation: slidein 1s forwards;
+}
+.banner{
+  position:inherit;
+  border-radius: 6rem 2rem 6rem 2rem;
+  border: 2px solid rgb(0, 0, 0, 1);
 }
 
 .WarpBtn {
@@ -138,13 +141,14 @@ body {
   height: 5vh;
   align-items: center;
   justify-content: center;
-  border: 3px solid rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255, 1);
   transition: 0.5s;
+  background-color: rgb(220, 220, 220,1);
   font: bold 30px Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: rgb(173, 129, 248);
+  color: rgb(175, 130, 250);
   overflow: hidden;
 }
-.Clear.display, .Wish_close.display{
+.Clear, .Wish_close{
   display: flex;
   position: absolute;
   top: 0.5rem;

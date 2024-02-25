@@ -23,9 +23,16 @@ const props = defineProps({
     justify-content: center;
     place-items: center;
     width: 8rem;
-    height: 30rem;
+    height: 25rem;
     clip-path: ellipse(8rem 10rem at 50% 50%);
     background-color: rgb(40, 40, 40, 1);
+    border: 0.2px solid rgb(255, 255,0 , 0);
+    margin: 0;
+    transition:0.5s;
+}
+.wish_Card:hover {
+    background-color: rgba(120, 120, 0, 0.6);
+    z-index: -1;
 }
 .wish_container{
     display: flex;

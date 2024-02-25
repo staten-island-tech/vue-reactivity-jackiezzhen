@@ -24,8 +24,10 @@ body, html{
 .home {
   position: absolute;
   left: 0;
-  top: 1rem;
+  top: 0.5rem;
   z-index: 1;
+  padding: 0;
+  margin: 0;
 }
 
 header {
