@@ -180,7 +180,7 @@ button:hover {
   box-sizing: border-box;
   cursor: pointer;
   background-color: rgba(98, 58, 255, 0.7);
-  border: 3px solid rgb(100, 100, 100);
+  border: 2px solid rgb(100, 100, 100);
 }
 
 @keyframes float {
