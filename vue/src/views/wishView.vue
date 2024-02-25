@@ -1,24 +1,33 @@
 <template>
   <div class="container">
-  <img class=Wish_bg src="../assets/Wish_bg.avif">
-  <div class="WarpBtn">
-    <button class="Warp1x" v-on:click="iteration(1)">Warp 1×</button>
-    <button class="Warp10x" v-on:click="iteration(10)">Warp 10×</button>
-  </div>
-  <div class=banner>
-    <p>{{ num }}</p>
-  </div>
-  <!-- <img class="banner" src="../assests/banner"> -->
+    <img class=Wish_bg src="../assets/Wish_bg.avif">
+    <button class="Clear" :class="{'display': on}" v-on:click="clear()"><img class=Wish_close :class="{'display':on}" src="../assets/Icon_close.png"></button>
+    <div class="WarpBtn">
+      <button class="Warp1x" v-on:click="iteration(1)">Warp 1×</button>
+      <button class="Warp10x" v-on:click="iteration(10)">Warp 10×</button>
+      
+    </div>
+    <div class=banner>
+      <!-- <img class="banner" src="../assests/banner"> -->
+    </div>
+    <div class="wished" :class="{'display': on}">
+      <wishCard v-for="(wish) in wish_Char" 
+      :key="wish[i]" 
+      :wish="wish" />
+    </div>
+
   </div>
 </template>
 
 <script setup>
 import rates from "@/components/icons/character.js";
-import {characters} from "@/components/icons/character.js";
-import {ref} from "vue";
+import { character } from "@/components/icons/character.js";
+import { ref } from "vue";
+import wishCard from "@/components/icons/icon.vue";
 
-const num = ref("");
-function random(rate) {
+const wish_Char = ref([]);
+const on = ref(false);
+function random_Rarity(rate) {
   let total = 0;
   for (let i = 0; i < rate.length; i++) {
     total += rate[i];
@@ -35,13 +44,23 @@ function random(rate) {
   return -1;
 }
 function iteration(times) {
-  num.value = "";
+  on.value = true;
+  wish_Char.value = [];
   for (let i = 0; i < times; i++) {
-    let result = (random(rates));
-    console.log(result)
-    console.log(characters[result])
-    num.value += `Rolled index ${result}\n`;
+    let rarity = (random_Rarity(rates));
+    let random_Character_Index = display_Char(character[rarity].characters.length)
+    let random_Character = character[rarity].characters[random_Character_Index]
+    wish_Char.value.push(random_Character)
   }
+}
+
+function display_Char(values) {
+  return Math.floor(Math.random() * values);
+}
+
+function clear(){
+  on.value = false;
+  wish_Char.value = [];
 }
 </script>
 
@@ -51,8 +70,8 @@ body {
   margin: 0;
   height: 100%;
   overflow: hidden;
+  box-sizing: border-box;
 }
-
 .container {
   position: absolute;
   top: 0;
@@ -60,17 +79,8 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-}
-
-.banner {
-  top: 50%;
-  width: 60%;
-  height: 60%;
-  max-width: 100%;
-  background-color: aliceblue;
-  color: black;
 }
 
 .Wish_bg {
@@ -83,30 +93,44 @@ body {
   filter: blur(0px);
   animation: fadeIn 5s;
 }
-
+.wished{
+  z-index: 1;
+  display: flex;
+  flex: wrap;
+  flex-direction: row;
+  justify-content: center;
+  place-items: center;
+  gap:1rem;
+  width: 100%;
+  height: 100%;
+}
+.wished.display{
+  background-color: rgb(0,0,0,0.8);
+}
 .banner {
   position: absolute;
-  width: 60%;
-  height: 60%;
+  top:2rem;
+  transform: translateX(-150rem);
+  width: 70%;
+  height: 80%;
   display: flex;
-  transform: translateY(-50%);
-  justify-content: center;
   background-color: aliceblue;
+  border-radius: 2rem;
+  animation: slidein 1s forwards;
 }
 
 .WarpBtn {
-  position: absolute;
+  position: fixed;
+  bottom: 3%;
+  right: 5%;
   display: flex;
   width: 35%;
-  bottom: 0;
-  right: 5%;
   gap: 1rem;
-  animation: slideup 3s forwards;
-  overflow: hidden;
+  animation: slideup 1s forwards, float 10s 1s infinite;
+  z-index: 3;
 }
 
-.Warp1x,
-.Warp10x {
+.Warp1x,.Warp10x {
   display: flex;
   border-radius: 2rem;
   padding: 2rem;
@@ -120,8 +144,30 @@ body {
   color: rgb(173, 129, 248);
   overflow: hidden;
 }
-
-.Warp1x:active, .Warp10x:active {
+.Clear.display, .Wish_close.display{
+  display: flex;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 3rem;
+  height: 2.8rem;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  border: 0;
+  font: bold 30px Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(173, 129, 248);
+  z-index: 100;
+  background-color: transparent;
+  transition: 0.5s;
+}
+.Clear:hover{
+  border: 0;
+  background-color: transparent;
+  opacity: 20%;
+}
+.Warp1x:active,
+.Warp10x:active {
   opacity: 80%;
   transition: 0s;
 }
@@ -129,9 +175,22 @@ body {
 button:hover {
   box-sizing: border-box;
   cursor: pointer;
-  /* border:3px solid rgb(0, 255, 255, 0.1); */
   background-color: rgba(98, 58, 255, 0.7);
   border: 3px solid rgb(100, 100, 100);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-10%)
+  }
+
+  100% {
+    transform: translateY(0)
+  }
 }
 
 @keyframes fadeIn {
@@ -145,20 +204,20 @@ button:hover {
 }
 
 @keyframes slidein {
-  from {
-    transform: translateX(0%);
-  }
-
-  to {
-    transform: translateX(100%);
+to {
+  transform: translateX(0rem)
   }
 }
 
 @keyframes slideup {
+  from {
+    transform: translateY(150rem);
+  }
   to {
-    bottom: 4%;
+    transform: translateY(0);
   }
 }
+
 
 @media (min-width: 1024px) {
   .about {
@@ -166,4 +225,5 @@ button:hover {
     display: flex;
     align-items: center;
   }
-}</style>
+}
+</style>

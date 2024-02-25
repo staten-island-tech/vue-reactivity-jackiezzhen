@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/" class="home"><img id="home" width="200rem" src="@/assets/home.png" alt="Home"></RouterLink>
+        <RouterLink to="/" class="home"><img id="home" width="200rem" src="@/assets/Icon_Home.png" alt="Home"></RouterLink>
         <div class="icons" id="icons">
           <RouterLink to="/wish" class="wish"><img class="id" src="@/assets/Icon_Warp.webp" alt="Wish"></RouterLink>
           <RouterLink to="/characters" class="characters"><img id="characters" src="@/assets/Icon_Characters.webp" alt="Characters"></RouterLink>
@@ -25,7 +25,7 @@ body, html{
   position: absolute;
   left: 0;
   top: 1rem;
-  z-index: 100;
+  z-index: 1;
 }
 
 header {
@@ -62,6 +62,7 @@ nav a.characters img {
 }
 
 nav a:hover {
+  transition: 1s;
   opacity: 50%;
 }
 
