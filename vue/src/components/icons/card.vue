@@ -1,11 +1,11 @@
 <template>
     <div class="card">
         <h1 class="name">{{ character.name }}</h1>
-        <img :src="`./src/assets/Character_${character.img}_Splash_Art.webp`" :alt="`${character.name} Splash Art`" />
-        <img class="rarity" :src="`./src/assets/${character.rarity}.webp`" :alt="`${character.rarity} Stars`" />
-        <div class="path_container"><img class="path" :src="`./src/assets/Path_${character.path}.webp`" :alt="`${character.path}`" />
+        <img :src="`../../public/Character_${character.img}_Splash_Art.webp`" :alt="`${character.name} Splash Art`" />
+        <img class="rarity" :src="`../../public/${character.rarity}.webp`" :alt="`${character.rarity} Stars`" />
+        <div class="path_container"><img class="path" :src="`../../public/Path_${character.path}.webp`" :alt="`${character.path}`" />
         <p>Path: {{ character.path }}</p></div>
-        <div class="type_container"><img class="type" :src="`./src/assets/Type_${character.type}.webp`" :alt="`${character.type}`" />
+        <div class="type_container"><img class="type" :src="`../../public/Type_${character.type}.webp`" :alt="`${character.type}`" />
         <p>Type: {{ character.type }}</p></div>
         
     </div>

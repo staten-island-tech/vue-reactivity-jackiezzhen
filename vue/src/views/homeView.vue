@@ -1,6 +1,6 @@
 <template>
    <video autoplay muted loop>
-      <source src="@/assets/train.mp4" type="video/mp4">
+      <source src="../../public/train.mp4" type="video/mp4">
     </video>
 </template>
 

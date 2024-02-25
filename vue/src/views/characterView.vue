@@ -1,5 +1,5 @@
 <template>
-  <img class="Character_bg" src="@/assets/Wallpaper_Ingenium_Dreams.webp" alt="Wallpaper Ingenium Dreams" />
+  <img class="Character_bg" src="../../public/Wallpaper_Ingenium_Dreams.webp" alt="Wallpaper Ingenium Dreams" />
   <div class="rarities">
     <div class="rarity" v-for="rarities in character" :key="rarities.rarity">
       <charCard v-for="char in rarities.characters" 

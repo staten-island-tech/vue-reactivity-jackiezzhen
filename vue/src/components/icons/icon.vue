@@ -1,10 +1,10 @@
 <template>
     <div class="wish_Card">
-        <img class="wish_img" :src="`./src/assets/Character_${wish.img}_icon.webp`" :alt="`${wish.name}`" />
-        <img class="wish_rarity" :src="`./src/assets/${wish.rarity}.webp`" :alt="`${wish.rarity} Stars`" />
+        <img class="wish_img" :src="`../../public/Character_${wish.img}_icon.webp`" :alt="`${wish.name}`" />
+        <img class="wish_rarity" :src="`../../public/${wish.rarity}.webp`" :alt="`${wish.rarity} Stars`" />
         <div class="wish_container">
-            <img class="wish_path" :src="`./src/assets/Path_${wish.path}.webp`" :alt="`${wish.path}`" />
-            <img class="wish_type" :src="`./src/assets/Type_${wish.type}.webp`" :alt="`${wish.type}`" />
+            <img class="wish_path" :src="`../../public/Path_${wish.path}.webp`" :alt="`${wish.path}`" />
+            <img class="wish_type" :src="`../../public/Type_${wish.type}.webp`" :alt="`${wish.type}`" />
         </div>
     </div>
 </template>
