@@ -1,5 +1,5 @@
-//const rarity = [6.3, 27.4, 66.3];
-const rarity = [100, 0, 0]; //Cheated Rates Guarenteed Character
+const rarity = [17.3, 32.7, 50];
+//const rarity = [100, 0, 0]; //Cheated Rates Guarenteed Character
 const character = [
   {
     rarity: "five_star",
