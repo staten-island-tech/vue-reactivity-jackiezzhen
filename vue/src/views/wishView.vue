@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <img class=Wish_bg src="../assets/Wish_bg.avif">
-    <button :class="{'clear': on}" v-on:click="clear()"><img :class="{'Wish_close':on}" src="../assets/Icon_close.png"></button>
+    <button :class="{'clear': on}" v-on:click="clear()"><img :class="{'Wish_close':on}" src="../assets/Icon_Close.png"></button>
     <div class="WarpBtn">
       <button class="Warp1x" v-on:click="iteration(1)">Warp 1×</button>
       <button class="Warp10x" v-on:click="iteration(10)">Warp 10×</button>
