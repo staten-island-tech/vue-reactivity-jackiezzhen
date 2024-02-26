@@ -1,12 +1,10 @@
 <template>
-   <video autoplay muted loop>
-      <source src="../../public/train.mp4" type="video/mp4">
-    </video>
+  <video autoplay muted loop>
+    <source src="../../public/train.mp4" type="video/mp4" />
+  </video>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style scoped>
 video {

@@ -1,10 +1,16 @@
 <template>
-  <img class="Character_bg" src="../../public/Wallpaper_Ingenium_Dreams.webp" alt="Wallpaper Ingenium Dreams" />
+  <img
+    class="Character_bg"
+    src="../../public/Wallpaper_Ingenium_Dreams.webp"
+    alt="Wallpaper Ingenium Dreams"
+  />
   <div class="rarities">
     <div class="rarity" v-for="rarities in character" :key="rarities.rarity">
-      <charCard v-for="char in rarities.characters" 
-      :key="char.name" 
-      :character="char" />
+      <charCard
+        v-for="char in rarities.characters"
+        :key="char.name"
+        :character="char"
+      />
     </div>
   </div>
 </template>
@@ -47,7 +53,7 @@ import { character } from "@/components/icons/character.js";
 
 @media (max-width: 800px) {
   .rarities {
-    top:20rem;
+    top: 20rem;
   }
-  }
+}
 </style>

@@ -1,21 +1,19 @@
 <template>
   <div class="container">
-    <img class=Wish_bg src="../../public/Wish_bg.avif">
-    <button :class="{'clear': on}" v-on:click="clear()"><img :class="{'Wish_close':on}" src="../../public/Icon_Close.png"></button>
+    <img class="Wish_bg" src="../../public/Wish_bg.avif" />
+    <button :class="{ clear: on }" v-on:click="clear()">
+      <img :class="{ Wish_close: on }" src="../../public/Icon_Close.png" />
+    </button>
     <div class="WarpBtn">
       <button class="Warp1x" v-on:click="iteration(1)">Warp 1×</button>
       <button class="Warp10x" v-on:click="iteration(10)">Warp 10×</button>
-      
     </div>
-    <div class=banner_container>
-      <img class="banner" src="../../public/Wallpaper_Banner.jpg">
+    <div class="banner_container">
+      <img class="banner" src="../../public/Wallpaper_Banner.jpg" />
     </div>
-    <div :class="{'wished': on}">
-      <wishCard v-for="(wish) in wish_Char" 
-      :key="wish[i]" 
-      :wish="wish" />
+    <div :class="{ wished: on }">
+      <wishCard v-for="wish in wish_Char" :key="wish[i]" :wish="wish" />
     </div>
-
   </div>
 </template>
 
@@ -47,10 +45,12 @@ function iteration(times) {
   on.value = true;
   wish_Char.value = [];
   for (let i = 0; i < times; i++) {
-    let rarity = (random_Rarity(rates));
-    let random_Character_Index = display_Char(character[rarity].characters.length)
-    let random_Character = character[rarity].characters[random_Character_Index]
-    wish_Char.value.push(random_Character)
+    let rarity = random_Rarity(rates);
+    let random_Character_Index = display_Char(
+      character[rarity].characters.length
+    );
+    let random_Character = character[rarity].characters[random_Character_Index];
+    wish_Char.value.push(random_Character);
   }
 }
 
@@ -58,7 +58,7 @@ function display_Char(values) {
   return Math.floor(Math.random() * values);
 }
 
-function clear(){
+function clear() {
   on.value = false;
   wish_Char.value = [];
 }
@@ -90,10 +90,10 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(0px);
+  filter: blur(1px);
   animation: fadeIn 5s;
 }
-.wished{
+.wished {
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
@@ -101,14 +101,14 @@ body {
   justify-content: center;
   place-items: center;
   position: absolute;
-  gap:1rem;
+  gap: 1rem;
   width: 100%;
   height: 100%;
-  background-color: rgb(0,0,0,0.8);
+  background-color: rgb(0, 0, 0, 0.8);
 }
 .banner_container {
   position: absolute;
-  top:1rem;
+  top: 1rem;
   transform: translateX(-150rem);
   width: 80%;
   height: auto;
@@ -116,8 +116,8 @@ body {
   justify-content: center;
   animation: slidein 1s forwards;
 }
-.banner{
-  position:inherit;
+.banner {
+  position: inherit;
   border-radius: 6rem 2rem 6rem 2rem;
   border: 2px solid rgb(0, 0, 0, 1);
 }
@@ -133,7 +133,8 @@ body {
   z-index: 3;
 }
 
-.Warp1x,.Warp10x {
+.Warp1x,
+.Warp10x {
   display: flex;
   border-radius: 2rem;
   padding: 2rem;
@@ -143,12 +144,13 @@ body {
   justify-content: center;
   border: 2px solid rgb(255, 255, 255, 1);
   transition: 0.5s;
-  background-color: rgb(220, 220, 220,1);
-  font: bold 30px Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: rgb(220, 220, 220, 1);
+  font: bold 30px Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: rgb(175, 130, 250);
   overflow: hidden;
 }
-.Clear, .Wish_close{
+.Clear,
+.Wish_close {
   display: flex;
   position: absolute;
   top: 0.5rem;
@@ -159,13 +161,13 @@ body {
   justify-content: center;
   transition: 0.5s;
   border: 0;
-  font: bold 30px Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font: bold 30px Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: rgb(173, 129, 248);
   z-index: 100;
   background-color: transparent;
   transition: 0.5s;
 }
-.Clear:hover{
+.Clear:hover {
   border: 0;
   background-color: transparent;
   opacity: 20%;
@@ -185,15 +187,15 @@ button:hover {
 
 @keyframes float {
   0% {
-    transform: translateY(0)
+    transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-10%)
+    transform: translateY(-10%);
   }
 
   100% {
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
 
@@ -203,13 +205,13 @@ button:hover {
   }
 
   100% {
-    filter: blur(0px);
+    filter: blur(1px);
   }
 }
 
 @keyframes slidein {
-to {
-  transform: translateX(0rem)
+  to {
+    transform: translateX(0rem);
   }
 }
 
@@ -221,7 +223,6 @@ to {
     transform: translateY(0);
   }
 }
-
 
 @media (min-width: 1024px) {
   .about {
