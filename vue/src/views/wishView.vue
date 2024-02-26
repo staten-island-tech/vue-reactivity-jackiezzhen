@@ -108,7 +108,7 @@ body {
 }
 .banner_container {
   position: absolute;
-  top: 1rem;
+  top: 8%;
   transform: translateX(-150rem);
   width: 80%;
   height: auto;
@@ -117,6 +117,10 @@ body {
   animation: slidein 1s forwards;
 }
 .banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  place-items: center;
   position: inherit;
   border-radius: 6rem 2rem 6rem 2rem;
   border: 2px solid rgb(0, 0, 0, 1);
