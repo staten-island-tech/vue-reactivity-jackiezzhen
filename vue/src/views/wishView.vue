@@ -90,8 +90,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(1px);
-  animation: fadeIn 5s;
+  filter: blur(5px);
+  animation: fadeIn 3s;
 }
 .wished {
   z-index: 1;
@@ -209,7 +209,7 @@ button:hover {
   }
 
   100% {
-    filter: blur(1px);
+    filter: blur(5px);
   }
 }
 
